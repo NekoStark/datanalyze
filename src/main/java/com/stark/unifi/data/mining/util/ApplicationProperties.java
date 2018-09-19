@@ -19,11 +19,11 @@ public class ApplicationProperties {
 	
 	static {
 		try {
+			// TODO definire un default?
 			Properties properties = new Properties();
 			properties.load(TextAnalyzer.class.getResourceAsStream("/application.properties"));
 
-			// TODO caricare
-			// TODO definire un default?
+			// TODO caricare stopwords
 			STOP_WORDS = new HashSet<>();
 			PHRASE_STOP_REGEX = properties.getProperty("phrase.stop.regex");
 			CHARACTER_REGEX = properties.getProperty("character.regex");

@@ -18,7 +18,7 @@ public class TextAnalyzerTest {
 	@Before
 	public void setUp() throws Exception {
 		StringBuilder sb = new StringBuilder();
-		String fileName = TextAnalyzerTest.class.getResource("/sample2.txt").getPath();
+		String fileName = TextAnalyzerTest.class.getResource("/txt/basic.txt").getPath();
 		try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
 			stream.forEach(s -> sb.append(s));
 		}
@@ -30,10 +30,9 @@ public class TextAnalyzerTest {
 	public void testAnalyzeText() {
 		Document result = TextAnalyzer.analyzeText(text);
 		
-		assertEquals(5L, result.getPhraseCount());
+		assertEquals(6L, result.getPhraseCount());
 		assertEquals(36L, result.getWordCount());
 		assertEquals(205L, result.getCharacterCount());
-		
 	}
 	
 }
