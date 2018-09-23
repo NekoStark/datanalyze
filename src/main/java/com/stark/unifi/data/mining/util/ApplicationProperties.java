@@ -10,38 +10,34 @@ import com.stark.unifi.data.mining.exception.PropertyLoadException;
 
 public class ApplicationProperties {
 
-	private static final Set<String> STOP_WORDS;
-	private static final String PHRASE_STOP_REGEX;
-	private static final String CHARACTER_REGEX;
+	private Set<String> stopWords;
+	private String phraseStopRegex;
+	private String characterRegex;
 
-	private ApplicationProperties() {
-	}
-	
-	static {
+	public ApplicationProperties(String propertyFilePath) {
 		try {
-			// TODO definire un default?
 			Properties properties = new Properties();
-			properties.load(TextAnalyzer.class.getResourceAsStream("/application.properties"));
+			properties.load(TextAnalyzer.class.getResourceAsStream(propertyFilePath));
 
-			// TODO caricare stopwords
-			STOP_WORDS = new HashSet<>();
-			PHRASE_STOP_REGEX = properties.getProperty("phrase.stop.regex");
-			CHARACTER_REGEX = properties.getProperty("character.regex");
+			// TODO 1. caricare stopwords e rifare il test sull'articolo
+			stopWords = new HashSet<>();
+			phraseStopRegex = properties.getProperty("phrase.stop.regex");
+			characterRegex = properties.getProperty("character.regex");
 
 		} catch (IOException e) {
 			throw new PropertyLoadException("Error during load of application properties", e);
 
 		}
 	}
-
+	
 	/**
 	 * Returns the set of words which are filtered when parsing text for word count
 	 * These words are defined in the application properties, separated by comma
 	 * 
 	 * @return set of stop-words
 	 */
-	public static Set<String> getStopWords() {
-		return STOP_WORDS;
+	public Set<String> getStopWords() {
+		return stopWords;
 	}
 
 	/**
@@ -50,8 +46,8 @@ public class ApplicationProperties {
 	 * 
 	 * @return the regex of end phrase characters
 	 */
-	public static String getPhraseStopRegex() {
-		return PHRASE_STOP_REGEX;
+	public String getPhraseStopRegex() {
+		return phraseStopRegex;
 	}
 
 	/**
@@ -60,8 +56,8 @@ public class ApplicationProperties {
 	 * 
 	 * @return the regex of characters to be filtered
 	 */
-	public static String getCharacterRegex() {
-		return CHARACTER_REGEX;
+	public String getCharacterRegex() {
+		return characterRegex;
 	}
 
 }
