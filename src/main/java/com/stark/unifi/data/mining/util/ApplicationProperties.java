@@ -1,9 +1,10 @@
 package com.stark.unifi.data.mining.util;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import com.stark.unifi.data.mining.analyzer.TextAnalyzer;
 import com.stark.unifi.data.mining.exception.PropertyLoadException;
@@ -19,8 +20,7 @@ public class ApplicationProperties {
 			Properties properties = new Properties();
 			properties.load(TextAnalyzer.class.getResourceAsStream(propertyFilePath));
 
-			// TODO 1. caricare stopwords e rifare il test sull'articolo
-			stopWords = new HashSet<>();
+			stopWords = initStopWords(properties.getProperty("stopwords"));
 			phraseStopRegex = properties.getProperty("phrase.stop.regex");
 			characterRegex = properties.getProperty("character.regex");
 
@@ -58,6 +58,12 @@ public class ApplicationProperties {
 	 */
 	public String getCharacterRegex() {
 		return characterRegex;
+	}
+	
+	private Set<String> initStopWords(String property) {
+		return Stream.of(property.split(","))
+				.map(String::trim)
+				.collect(Collectors.toSet());
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.stark.unifi.data.mining.analyzer;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -33,10 +32,10 @@ public class TextAnalyzer {
 	}
 	
 	private List<String> getWords(String text) {
-		// FIXME mettere una regex che non becchi gli underscore
-		// TODO rimuovere stopwords
 		String sanitized = text.replaceAll(properties.getCharacterRegex(), " ");
-		return Arrays.asList(sanitized.split("\\s"));
+		return Stream.of(sanitized.split("\\s"))
+					.filter(s -> !properties.getStopWords().contains(s))
+					.collect(Collectors.toList());
 	}
 	
 }

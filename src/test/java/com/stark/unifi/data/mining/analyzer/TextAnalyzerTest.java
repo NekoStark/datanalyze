@@ -17,7 +17,7 @@ public class TextAnalyzerTest {
 		String text = new FileContentReader().getText("/txt/basic.txt");
 		Document result = analyzer.analyzeText(text);
 		
-		assertEquals(5L, result.getPhraseCount());
+		assertEquals(6L, result.getPhraseCount());
 		assertEquals(36L, result.getWordCount());
 		assertEquals(205L, result.getCharacterCount());
 	}
