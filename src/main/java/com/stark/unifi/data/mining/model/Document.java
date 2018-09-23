@@ -1,5 +1,6 @@
 package com.stark.unifi.data.mining.model;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Document {
@@ -20,21 +21,25 @@ public class Document {
 		return originalText;
 	}
 
-	public long getPhraseCount() {
-		return phrases.size();
+	public BigDecimal getPhraseCount() {
+		return BigDecimal.valueOf(phrases.size());
 	}
 
-	public long getWordCount() {
-		return phrases.stream()
+	public BigDecimal getWordCount() {
+		return BigDecimal.valueOf(
+				phrases.stream()
 					.map(p -> p.getWords().size())
-					.reduce(0, (s, i) -> i+s);
+					.reduce(0, (s, i) -> i+s)
+				);
 	}
 
-	public long getCharacterCount() {
-		return phrases.stream()
+	public BigDecimal getCharacterCount() {
+		return BigDecimal.valueOf(
+				phrases.stream()
 					.flatMap(p -> p.getWords().stream())
 					.map(String::length)
-					.reduce(0, (s, i) -> i+s);
+					.reduce(0, (s, i) -> i+s)
+				);
 	}
 
 }
