@@ -1,11 +1,11 @@
-package com.stark.unifi.data.mining.util;
+package com.stark.unifi.datanalyze.util;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.stream.Stream;
 
-import com.stark.unifi.data.mining.analyzer.TextAnalyzerTest;
+import com.stark.unifi.datanalyzer.analyzer.TextAnalyzerTest;
 
 public class FileContentReader {
 

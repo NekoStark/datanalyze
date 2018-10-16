@@ -1,4 +1,4 @@
-package com.stark.unifi.data.mining.model;
+package com.stark.unifi.datanalyze.model;
 
 import java.util.List;
 

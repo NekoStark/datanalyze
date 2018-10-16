@@ -1,4 +1,4 @@
-package com.stark.unifi.data.mining.exception;
+package com.stark.unifi.datanalyze.exception;
 
 public class PropertyLoadException extends RuntimeException {
 

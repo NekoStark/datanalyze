@@ -1,8 +1,8 @@
-package com.stark.unifi.data.mining.calc;
+package com.stark.unifi.datanalyze.calc;
 
 import java.math.BigDecimal;
 
-import com.stark.unifi.data.mining.model.Document;
+import com.stark.unifi.datanalyze.model.Document;
 
 public interface IndexCalculator {
 

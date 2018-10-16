@@ -1,23 +1,23 @@
-package com.stark.unifi.data.mining.analyzer;
+package com.stark.unifi.datanalyze.analyzer;
 
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import com.stark.unifi.data.mining.model.Document;
-import com.stark.unifi.data.mining.model.Phrase;
-import com.stark.unifi.data.mining.util.ApplicationProperties;
+import com.stark.unifi.datanalyze.model.Document;
+import com.stark.unifi.datanalyze.model.Phrase;
+import com.stark.unifi.datanalyze.util.ApplicationProperties;
 
 public class TextAnalyzer {
 
 	private ApplicationProperties properties;
 	
 	public TextAnalyzer() {
-		this(AnalyzerLanguage.DEFAULT);
+		this("/application.properties");
 	}
 	
-	public TextAnalyzer(AnalyzerLanguage language) {
-		this.properties = new ApplicationProperties(language.getPropertyFilePath());
+	public TextAnalyzer(String propertyFilePath) {
+		this.properties = new ApplicationProperties(propertyFilePath);
 	}
 	
 	public Document analyzeText(String text) {

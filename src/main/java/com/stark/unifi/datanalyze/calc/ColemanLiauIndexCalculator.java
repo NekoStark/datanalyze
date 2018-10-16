@@ -1,9 +1,9 @@
-package com.stark.unifi.data.mining.calc;
+package com.stark.unifi.datanalyze.calc;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-import com.stark.unifi.data.mining.model.Document;
+import com.stark.unifi.datanalyze.model.Document;
 
 public class ColemanLiauIndexCalculator implements IndexCalculator {
 

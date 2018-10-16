@@ -1,4 +1,4 @@
-package com.stark.unifi.data.mining.calc;
+package com.stark.unifi.datanalyzer.calc;
 
 import static org.junit.Assert.assertEquals;
 
@@ -7,9 +7,12 @@ import java.math.BigDecimal;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.stark.unifi.data.mining.analyzer.TextAnalyzer;
-import com.stark.unifi.data.mining.model.Document;
-import com.stark.unifi.data.mining.util.FileContentReader;
+import com.stark.unifi.datanalyze.analyzer.TextAnalyzer;
+import com.stark.unifi.datanalyze.calc.AutomaticReadingIndexCalculator;
+import com.stark.unifi.datanalyze.calc.ColemanLiauIndexCalculator;
+import com.stark.unifi.datanalyze.calc.IndexCalculator;
+import com.stark.unifi.datanalyze.model.Document;
+import com.stark.unifi.datanalyze.util.FileContentReader;
 
 public class IndexCalculatorTest {
 

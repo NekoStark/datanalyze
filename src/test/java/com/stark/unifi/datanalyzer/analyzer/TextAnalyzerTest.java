@@ -1,4 +1,4 @@
-package com.stark.unifi.data.mining.analyzer;
+package com.stark.unifi.datanalyzer.analyzer;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,8 +6,9 @@ import java.math.BigDecimal;
 
 import org.junit.Test;
 
-import com.stark.unifi.data.mining.model.Document;
-import com.stark.unifi.data.mining.util.FileContentReader;
+import com.stark.unifi.datanalyze.analyzer.TextAnalyzer;
+import com.stark.unifi.datanalyze.model.Document;
+import com.stark.unifi.datanalyze.util.FileContentReader;
 
 public class TextAnalyzerTest {
 
