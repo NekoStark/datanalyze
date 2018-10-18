@@ -1,12 +1,12 @@
 package com.stark.unifi.datanalyze.util;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import com.stark.unifi.datanalyze.analyzer.TextAnalyzer;
 import com.stark.unifi.datanalyze.exception.PropertyLoadException;
 
 public class ApplicationProperties {
@@ -18,9 +18,9 @@ public class ApplicationProperties {
 	public ApplicationProperties(String propertyFilePath) {
 		try {
 			Properties properties = new Properties();
-			properties.load(TextAnalyzer.class.getResourceAsStream(propertyFilePath));
+			properties.load(ApplicationProperties.class.getResourceAsStream(propertyFilePath));
 
-			stopWords = initStopWords(properties.getProperty("stopwords"));
+			stopWords = initStopWords(properties.getProperty("stopwords.file"));
 			phraseStopRegex = properties.getProperty("phrase.stop.regex");
 			characterRegex = properties.getProperty("character.regex");
 
@@ -60,8 +60,11 @@ public class ApplicationProperties {
 		return characterRegex;
 	}
 	
-	private Set<String> initStopWords(String property) {
-		return Stream.of(property.split(","))
+	private Set<String> initStopWords(String property) throws IOException {
+		String stopWordsFilePath = ApplicationProperties.class.getResource(property).getPath();
+		return Files
+				.readAllLines(Paths.get(stopWordsFilePath))
+				.stream()
 				.map(String::trim)
 				.collect(Collectors.toSet());
 	}
