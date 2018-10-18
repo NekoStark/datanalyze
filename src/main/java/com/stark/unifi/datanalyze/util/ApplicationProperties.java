@@ -1,8 +1,9 @@
 package com.stark.unifi.datanalyze.util;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -61,12 +62,14 @@ public class ApplicationProperties {
 	}
 	
 	private Set<String> initStopWords(String property) throws IOException {
-		String stopWordsFilePath = ApplicationProperties.class.getResource(property).getPath();
-		return Files
-				.readAllLines(Paths.get(stopWordsFilePath))
-				.stream()
-				.map(String::trim)
-				.collect(Collectors.toSet());
+		InputStream is = ApplicationProperties.class.getResourceAsStream(property);
+		try (BufferedReader buffer = new BufferedReader(new InputStreamReader(is))) {
+			return buffer
+					.lines()
+					.map(String::trim)
+					.collect(Collectors.toSet());
+		}
+
 	}
 
 }

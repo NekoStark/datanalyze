@@ -1,4 +1,4 @@
-# Datanalyzer
+# Datanalyze
 ## Parser per l'analisi di testo e il calcolo di indici di readability
 
 ### Utilizzo
