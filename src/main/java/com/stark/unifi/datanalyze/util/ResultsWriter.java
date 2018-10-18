@@ -25,7 +25,7 @@ public class ResultsWriter {
 		outputDir = new File(opts.getOutputDir());
 	}
 
-	public void write(Document d) {
+	public void write(Document d, boolean skipExtractedFile) {
 		if (!outputDir.exists()) {
 			throw new ResultsWriterException("Output directory doesn't not exist");
 		}
@@ -35,8 +35,10 @@ public class ResultsWriter {
 		}
 
 		// Write extracted text
-		write(getOutputFile("extracted"), Collections.singletonList(d.getOriginalText()));
-
+		if(!skipExtractedFile) {
+			write(getOutputFile("extracted"), Collections.singletonList(d.getOriginalText()));
+		}
+		
 		// Write document stats
 		write(getOutputFile("stats"), Arrays.asList(
 			"Words: " + d.getWordCount(),

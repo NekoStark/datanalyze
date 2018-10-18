@@ -17,12 +17,13 @@ public class DatanalyzeMain {
 		CommandLineOptions opts = new CommandLineOptions();
 		try {
 			opts.parse(args);
-			
-			String text = TextReader.read(opts.getInputFile());
+			String inputFilePath = opts.getInputFile();
+
+			String text = TextReader.read(inputFilePath);
 			TextAnalyzer analyzer = new TextAnalyzer();
 			Document doc = analyzer.analyzeText(text);
 			
-			new ResultsWriter(opts).write(doc);
+			new ResultsWriter(opts).write(doc, TextReader.isTxt(inputFilePath));
 			
 		} catch(CommandLineOptionsParseException e) {
 			opts.printHelp();

@@ -11,18 +11,27 @@ public class TextReader {
 	}
 
 	public static String read(String filePath) {
-		int extensionIndex = filePath.lastIndexOf('.');
-		String extension = filePath.substring(extensionIndex + 1);
-
-		if (PDF_EXTENSION.equals(extension)) {
+		if (isPdf(filePath)) {
 			return PdfTextReader.read(filePath);
 		}
 
-		if (TXT_EXTENSION.equals(extension)) {
+		if (isTxt(filePath)) {
 			return TextFileReader.read(filePath);
 		}
 
 		throw new TextExtractionException("Unsupported file");
 	}
 
+	public static boolean isPdf(String filePath) {
+		return PDF_EXTENSION.equals(getExtension(filePath));
+	}
+
+	public static boolean isTxt(String filePath) {
+		return TXT_EXTENSION.equals(getExtension(filePath));
+	}
+
+	public static String getExtension(String filePath) {
+		int extensionIndex = filePath.lastIndexOf('.');
+		return filePath.substring(extensionIndex + 1);
+	}
 }
