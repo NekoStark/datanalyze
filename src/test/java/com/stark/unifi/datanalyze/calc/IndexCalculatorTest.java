@@ -1,4 +1,4 @@
-package com.stark.unifi.datanalyzer.calc;
+package com.stark.unifi.datanalyze.calc;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,7 +21,7 @@ public class IndexCalculatorTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		String text = new FileContentReader().getText("/txt/basic_500.txt");
+		String text = new FileContentReader().read("/txt/basic_500.txt");
 		document = new TextAnalyzer().analyzeText(text);
 	}
 	

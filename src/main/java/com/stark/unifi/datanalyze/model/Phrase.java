@@ -4,15 +4,15 @@ import java.util.List;
 
 public class Phrase {
 
-	private List<String> words;
+	private List<Word> words;
 	private String originalText;
 
-	public Phrase(List<String> words, String originalText) {
+	public Phrase(List<Word> words, String originalText) {
 		this.words = words;
 		this.originalText = originalText;
 	}
 
-	public List<String> getWords() {
+	public List<Word> getWords() {
 		return words;
 	}
 

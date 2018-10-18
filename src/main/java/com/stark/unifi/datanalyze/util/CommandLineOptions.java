@@ -19,7 +19,7 @@ public class CommandLineOptions {
 
 	public CommandLineOptions() {
 		options = new Options();
-		options.addOption("i", "inputFile", true, "the pdf file to analyze");
+		options.addOption("i", "inputFile", true, "the pdf or txt file to analyze");
 		options.addOption("o", "outputDir", true, "the directory where to write output files");
 		options.addOption("d", "treatAsDiphthong", true,
 				"if true never breaks groups of vowels. Otherwhise always break group of vowels (hyatus)˙");
@@ -28,7 +28,7 @@ public class CommandLineOptions {
 	public void parse(String[] args) {
 		CommandLine cmd = getCommandLine(args);
 
-		if (!cmd.hasOption("i") || cmd.hasOption("o")) {
+		if (!cmd.hasOption("i") || !cmd.hasOption("o")) {
 			throw new CommandLineOptionsParseException("Missing options");
 		}
 

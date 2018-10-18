@@ -1,4 +1,4 @@
-package com.stark.unifi.datanalyzer.analyzer;
+package com.stark.unifi.datanalyze.analyzer;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package com.stark.unifi.datanalyzer.analyzer;
+package com.stark.unifi.datanalyze.analyzer;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,7 +17,7 @@ public class TextAnalyzerTest {
 	@Test
 	public void testAnalyzeTextBasic() throws Exception {
 		analyzer = new TextAnalyzer();
-		String text = new FileContentReader().getText("/txt/basic.txt");
+		String text = new FileContentReader().read("/txt/basic.txt");
 		Document result = analyzer.analyzeText(text);
 		
 		assertEquals(BigDecimal.valueOf(6), result.getPhraseCount());

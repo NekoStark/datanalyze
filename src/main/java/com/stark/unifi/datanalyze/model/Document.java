@@ -33,19 +33,20 @@ public class Document {
 				);
 	}
 	
-//	public BigDecimal getSyllableCount() {
-//		return BigDecimal.valueOf(
-//				phrases.stream()
-//					.flatMap(p -> p.getWords().stream())
-//					.map(w -> new Syll)
-//					.reduce(0, (s, i) -> i+s)
-//				);
-//	}
+	public BigDecimal getSyllableCount() {
+		return BigDecimal.valueOf(
+				phrases.stream()
+					.flatMap(p -> p.getWords().stream())
+					.map(w -> w.getSyllables().size())
+					.reduce(0, (s, i) -> i+s)
+				);
+	}
 
 	public BigDecimal getCharacterCount() {
 		return BigDecimal.valueOf(
 				phrases.stream()
 					.flatMap(p -> p.getWords().stream())
+					.map(Word::getOriginalText)
 					.map(String::length)
 					.reduce(0, (s, i) -> i+s)
 				);

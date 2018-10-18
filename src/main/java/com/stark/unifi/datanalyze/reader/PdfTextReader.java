@@ -1,4 +1,4 @@
-package com.stark.unifi.datanalyze.pdf;
+package com.stark.unifi.datanalyze.reader;
 
 import java.io.File;
 import java.io.IOException;
@@ -6,11 +6,14 @@ import java.io.IOException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-import com.stark.unifi.datanalyze.exception.PdfExtractionException;
+import com.stark.unifi.datanalyze.exception.TextExtractionException;
 
-public class PdfExtractor {
+public class PdfTextReader {
 
-	public String extract(String filePath) {
+	private PdfTextReader() {
+	}
+	
+	static String read(String filePath) {
 		File file = new File(filePath);
 		
 		try (PDDocument document = PDDocument.load(file)) {
@@ -18,7 +21,7 @@ public class PdfExtractor {
 			return pdfStripper.getText(document);
 
 		} catch (IOException e) {
-			throw new PdfExtractionException(e);
+			throw new TextExtractionException(e);
 		}
 	}
 

@@ -6,6 +6,7 @@ import java.util.stream.Stream;
 
 import com.stark.unifi.datanalyze.model.Document;
 import com.stark.unifi.datanalyze.model.Phrase;
+import com.stark.unifi.datanalyze.model.Word;
 import com.stark.unifi.datanalyze.util.ApplicationProperties;
 
 public class TextAnalyzer {
@@ -31,12 +32,16 @@ public class TextAnalyzer {
 					.collect(Collectors.toList());
 	}
 	
-	// TODO fare la classe Word con dentro il testo e le sillabe..
-	private List<String> getWords(String text) {
-		String sanitized = text.replaceAll(properties.getCharacterRegex(), " ");
+	private List<Word> getWords(String phrase) {
+		String sanitized = phrase.replaceAll(properties.getCharacterRegex(), " ");
 		return Stream.of(sanitized.split("\\s"))
 					.filter(s -> !properties.getStopWords().contains(s))
+					.map(w -> new Word(getSyllables(w), w))
 					.collect(Collectors.toList());
+	}
+	
+	private List<String> getSyllables(String word) {
+		return new Syllabifier().getSyllables(word);
 	}
 	
 }
