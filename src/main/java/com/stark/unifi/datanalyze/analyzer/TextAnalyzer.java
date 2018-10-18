@@ -31,6 +31,7 @@ public class TextAnalyzer {
 					.collect(Collectors.toList());
 	}
 	
+	// TODO fare la classe Word con dentro il testo e le sillabe..
 	private List<String> getWords(String text) {
 		String sanitized = text.replaceAll(properties.getCharacterRegex(), " ");
 		return Stream.of(sanitized.split("\\s"))

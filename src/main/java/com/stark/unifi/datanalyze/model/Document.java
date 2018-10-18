@@ -32,6 +32,15 @@ public class Document {
 					.reduce(0, (s, i) -> i+s)
 				);
 	}
+	
+//	public BigDecimal getSyllableCount() {
+//		return BigDecimal.valueOf(
+//				phrases.stream()
+//					.flatMap(p -> p.getWords().stream())
+//					.map(w -> new Syll)
+//					.reduce(0, (s, i) -> i+s)
+//				);
+//	}
 
 	public BigDecimal getCharacterCount() {
 		return BigDecimal.valueOf(

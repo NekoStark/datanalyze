@@ -25,6 +25,4 @@ public class TextAnalyzerTest {
 		assertEquals(BigDecimal.valueOf(205), result.getCharacterCount());
 	}
 	
-	//TODO test per altra lingua
-	
 }
