@@ -26,6 +26,22 @@ public class IndexCalculatorTest {
 	}
 	
 	@Test
+	public void testFleschReadingEase() {
+		calculator = new FleschReadingEaseCalculator();
+		BigDecimal result = calculator.execute(document);
+		
+		assertEquals(BigDecimal.valueOf(-95.69), result);
+	}
+	
+	@Test
+	public void testFogIndex() {
+		calculator = new FogIndexCalculator();
+		BigDecimal result = calculator.execute(document);
+		
+		assertEquals(BigDecimal.valueOf(19.33), result);
+	}
+	
+	@Test
 	public void testColemanLiauIndex() {
 		calculator = new ColemanLiauIndexCalculator();
 		BigDecimal result = calculator.execute(document);

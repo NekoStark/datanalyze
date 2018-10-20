@@ -23,6 +23,8 @@ public class TextAnalyzerTest {
 		assertEquals(BigDecimal.valueOf(6), result.getPhraseCount());
 		assertEquals(BigDecimal.valueOf(36), result.getWordCount());
 		assertEquals(BigDecimal.valueOf(205), result.getCharacterCount());
+		assertEquals(BigDecimal.valueOf(137), result.getSyllableCount());
+		assertEquals(BigDecimal.valueOf(17), result.getComplexWordCount());
 	}
 	
 }

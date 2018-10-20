@@ -33,6 +33,15 @@ public class Document {
 				);
 	}
 	
+	public BigDecimal getComplexWordCount() {
+		return BigDecimal.valueOf(
+				phrases.stream()
+					.flatMap(p -> p.getWords().stream())
+					.filter(w -> w.getSyllables().size() > 3)
+					.count()
+				);
+	}
+	
 	public BigDecimal getSyllableCount() {
 		return BigDecimal.valueOf(
 				phrases.stream()
