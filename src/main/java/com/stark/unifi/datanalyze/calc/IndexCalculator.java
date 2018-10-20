@@ -1,13 +1,15 @@
 package com.stark.unifi.datanalyze.calc;
 
-import java.math.BigDecimal;
+import org.apache.commons.math3.util.Precision;
 
 import com.stark.unifi.datanalyze.model.Document;
 
-public interface IndexCalculator {
+public abstract class IndexCalculator {
 
-	static final BigDecimal ONE_HUNDRED = BigDecimal.valueOf(100);
-	
-	BigDecimal execute(Document document);
-	
+	public double execute(Document document) {
+		return Precision.round(indexCalcImpl(document), 2);
+	}
+
+	abstract double indexCalcImpl(Document document);
+
 }

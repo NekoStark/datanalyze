@@ -1,25 +1,15 @@
 package com.stark.unifi.datanalyze.calc;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 import com.stark.unifi.datanalyze.model.Document;
 
-public class ColemanLiauIndexCalculator implements IndexCalculator {
+public class ColemanLiauIndexCalculator extends IndexCalculator {
 
-	public static final BigDecimal FACTOR_A = BigDecimal.valueOf(0.0588);
-	public static final BigDecimal FACTOR_B = BigDecimal.valueOf(0.296);
-	public static final BigDecimal FACTOR_C = BigDecimal.valueOf(15.8);
-	
 	@Override
-	public BigDecimal execute(Document document) {
-		BigDecimal l = document.getCharacterCount().divide(document.getWordCount(), 2, RoundingMode.HALF_UP).multiply(ONE_HUNDRED);
-		BigDecimal s = document.getSentenceCount().divide(document.getWordCount(), 2, RoundingMode.HALF_UP).multiply(ONE_HUNDRED);
-		
-		return FACTOR_A.multiply(l)
-					.subtract(FACTOR_B.multiply(s))
-					.subtract(FACTOR_C)
-					.setScale(2, RoundingMode.HALF_UP);
+	public double indexCalcImpl(Document document) {
+		double l = (double) document.getCharacterCount() / document.getWordCount() * 100;
+		double s = (double) document.getSentenceCount() / document.getWordCount() * 100;
+
+		return 0.0588 * l - 0.296 * s - 15.8;
 	}
 
 }

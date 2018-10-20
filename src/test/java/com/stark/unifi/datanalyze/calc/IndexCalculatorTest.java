@@ -25,57 +25,43 @@ public class IndexCalculatorTest {
 	@Test
 	public void testFleschReadingEase() {
 		calculator = new FleschReadingEaseCalculator();
-		BigDecimal result = calculator.execute(document);
-		
-		assertEquals(BigDecimal.valueOf(-95.69), result);
+		assertEquals(-95.69, calculator.execute(document), 0.01);
 	}
 	
 	@Test
 	public void testFogIndex() {
 		calculator = new FogIndexCalculator();
-		BigDecimal result = calculator.execute(document);
-		
-		assertEquals(BigDecimal.valueOf(19.33), result);
+		assertEquals(19.33, calculator.execute(document), 0.01);
 	}
 	
 	@Test
 	public void testColemanLiauIndex() {
 		calculator = new ColemanLiauIndexCalculator();
-		BigDecimal result = calculator.execute(document);
-		
-		assertEquals(BigDecimal.valueOf(12.75), result);
+		assertEquals(12.75, calculator.execute(document), 0.01);
 	}
 	
 	@Test
 	public void testLixIndex() {
 		calculator = new LixIndexCalculator();
-		BigDecimal result = calculator.execute(document);
-		
-		assertEquals(BigDecimal.valueOf(38.93), result);
+		assertEquals(38.93, calculator.execute(document), 0.01);
 	}
 	
 	@Test
 	public void testAutomatedReadabilityIndex() {
 		calculator = new AutomatedReadabilityIndexCalculator();
-		BigDecimal result = calculator.execute(document);
-		
-		assertEquals(BigDecimal.valueOf(8.45), result);
+		assertEquals(8.45, calculator.execute(document), 0.01);
 	}
 	
 	@Test
 	public void testSmogIndex() {
 		calculator = new SmogIndexCalculator();
-		BigDecimal result = calculator.execute(document);
-		
-		assertEquals(BigDecimal.valueOf(17.52), result);
+		assertEquals(17.52, calculator.execute(document), 0.01);
 	}
 	
 	@Test
 	public void testFleschKincaidIndex() {
 		calculator = new FleschKincaidIndexCalculator();
-		BigDecimal result = calculator.execute(document);
-		
-		assertEquals(BigDecimal.valueOf(28.68), result);
+		assertEquals(28.68, calculator.execute(document), 0.01);
 	}
 	
 }
