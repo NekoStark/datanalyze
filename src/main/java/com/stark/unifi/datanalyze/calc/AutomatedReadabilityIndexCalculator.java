@@ -14,7 +14,7 @@ public class AutomatedReadabilityIndexCalculator implements IndexCalculator {
 	@Override
 	public BigDecimal execute(Document document) {
 		BigDecimal a = document.getCharacterCount().divide(document.getWordCount(), 2, RoundingMode.HALF_UP);
-		BigDecimal b = document.getWordCount().divide(document.getPhraseCount(), 2, RoundingMode.HALF_UP);
+		BigDecimal b = document.getWordCount().divide(document.getSentenceCount(), 2, RoundingMode.HALF_UP);
 		
 		return FACTOR_A.multiply(a)
 						.add( FACTOR_B.multiply(b) )

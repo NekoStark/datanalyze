@@ -42,7 +42,7 @@ public class ResultsWriter {
 		// Write document stats
 		write(getOutputFile("stats"), Arrays.asList(
 			"Words: " + d.getWordCount(),
-			"Phrases: " + d.getPhraseCount(),
+			"Sentences: " + d.getSentenceCount(),
 			"Syllables: " + d.getSyllableCount(),
 			"Characters: " + d.getCharacterCount()
 		));

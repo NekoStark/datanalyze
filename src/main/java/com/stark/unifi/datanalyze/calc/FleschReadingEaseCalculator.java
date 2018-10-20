@@ -13,7 +13,7 @@ public class FleschReadingEaseCalculator implements IndexCalculator {
 
 	@Override
 	public BigDecimal execute(Document document) {
-		BigDecimal asl = document.getWordCount().divide(document.getPhraseCount(), 5, RoundingMode.HALF_UP);
+		BigDecimal asl = document.getWordCount().divide(document.getSentenceCount(), 5, RoundingMode.HALF_UP);
 		BigDecimal asw = document.getSyllableCount().divide(document.getWordCount(), 5, RoundingMode.HALF_UP);
 
 		return FACTOR_A

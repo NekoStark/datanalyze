@@ -8,9 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.stark.unifi.datanalyze.analyzer.TextAnalyzer;
-import com.stark.unifi.datanalyze.calc.AutomatedReadabilityIndexCalculator;
-import com.stark.unifi.datanalyze.calc.ColemanLiauIndexCalculator;
-import com.stark.unifi.datanalyze.calc.IndexCalculator;
 import com.stark.unifi.datanalyze.model.Document;
 import com.stark.unifi.datanalyze.util.FileContentReader;
 
@@ -71,6 +68,14 @@ public class IndexCalculatorTest {
 		BigDecimal result = calculator.execute(document);
 		
 		assertEquals(BigDecimal.valueOf(17.52), result);
+	}
+	
+	@Test
+	public void testFleschKincaidIndex() {
+		calculator = new FleschKincaidIndexCalculator();
+		BigDecimal result = calculator.execute(document);
+		
+		assertEquals(BigDecimal.valueOf(28.68), result);
 	}
 	
 }

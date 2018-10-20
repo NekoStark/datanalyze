@@ -20,7 +20,7 @@ public class TextAnalyzerTest {
 		String text = new FileContentReader().read("/txt/basic.txt");
 		Document result = analyzer.analyzeText(text);
 		
-		assertEquals(BigDecimal.valueOf(6), result.getPhraseCount());
+		assertEquals(BigDecimal.valueOf(6), result.getSentenceCount());
 		assertEquals(BigDecimal.valueOf(36), result.getWordCount());
 		assertEquals(BigDecimal.valueOf(205), result.getCharacterCount());
 		assertEquals(BigDecimal.valueOf(137), result.getSyllableCount());

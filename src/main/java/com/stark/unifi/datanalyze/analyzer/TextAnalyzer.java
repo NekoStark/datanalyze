@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.stark.unifi.datanalyze.model.Document;
-import com.stark.unifi.datanalyze.model.Phrase;
+import com.stark.unifi.datanalyze.model.Sentence;
 import com.stark.unifi.datanalyze.model.Word;
 import com.stark.unifi.datanalyze.util.ApplicationProperties;
 
@@ -25,10 +25,10 @@ public class TextAnalyzer {
 		return new Document(getPhrases(text), text);
 	}
 	
-	private List<Phrase> getPhrases(String text) {
+	private List<Sentence> getPhrases(String text) {
 		return Stream.of(text.split(properties.getPhraseStopRegex()))
 					.map(String::trim)
-					.map(s -> new Phrase(getWords(s), s))
+					.map(s -> new Sentence(getWords(s), s))
 					.collect(Collectors.toList());
 	}
 	

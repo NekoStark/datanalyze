@@ -14,7 +14,7 @@ public class SmogIndexCalculator implements IndexCalculator {
 	@Override
 	public BigDecimal execute(Document document) {
 		BigDecimal a = document.getComplexWordCount(2).multiply(
-							FACTOR_B.divide(document.getPhraseCount(), 5, RoundingMode.HALF_UP)
+							FACTOR_B.divide(document.getSentenceCount(), 5, RoundingMode.HALF_UP)
 						);
 		
 		BigDecimal b = BigDecimal.valueOf(Math.sqrt(a.doubleValue()));

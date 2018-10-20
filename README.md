@@ -32,3 +32,7 @@ Altre classi degne di menzione:
 - ```Syllabifier```, che implementa l'operazione di sillabazione. Essendo questa operazione dipendente da alcuni dati non ricavabili dal testo (principalmente, dove cadono gli accenti tonici in una parola), si fanno alcune assunzioni sui gruppi di vocali per trattarli in modo coerente e controllato. Questa opzione può essere cambiata usando il parametro ```-d``` quando si lancia il jar
 - ```TextReader```, controlla che il file sia supportato, e poi estrae il testo restituendo una stringa
 - ```ResultsWriter```, scrive i file nella cartella specificata dal parametro ```-o```. I file vengono sovrascritti ad ogni esecuzione.
+
+### Indici di leggibilità implementati
+
+...

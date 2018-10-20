@@ -5,29 +5,29 @@ import java.util.List;
 
 public class Document {
 
-	private List<Phrase> phrases;
+	private List<Sentence> sentences;
 	private String originalText;
 
-	public Document(List<Phrase> phrases, String originalText) {
-		this.phrases = phrases;
+	public Document(List<Sentence> phrases, String originalText) {
+		this.sentences = phrases;
 		this.originalText = originalText;
 	}
 
-	public List<Phrase> getPhrases() {
-		return phrases;
+	public List<Sentence> getSentences() {
+		return sentences;
 	}
 
 	public String getOriginalText() {
 		return originalText;
 	}
 
-	public BigDecimal getPhraseCount() {
-		return BigDecimal.valueOf(phrases.size());
+	public BigDecimal getSentenceCount() {
+		return BigDecimal.valueOf(sentences.size());
 	}
 
 	public BigDecimal getWordCount() {
 		return BigDecimal.valueOf(
-				phrases.stream()
+				sentences.stream()
 					.map(p -> p.getWords().size())
 					.reduce(0, (s, i) -> i+s)
 				);
@@ -38,7 +38,7 @@ public class Document {
 	 */
 	public BigDecimal getComplexWordCount(int numOfSyllables) {
 		return BigDecimal.valueOf(
-				phrases.stream()
+				sentences.stream()
 					.flatMap(p -> p.getWords().stream())
 					.filter(w -> w.getSyllables().size() > numOfSyllables)
 					.count()
@@ -50,7 +50,7 @@ public class Document {
 	 */
 	public BigDecimal getLongWordCount() {
 		return BigDecimal.valueOf(
-				phrases.stream()
+				sentences.stream()
 				.flatMap(p -> p.getWords().stream())
 				.filter(w -> w.getOriginalText().length() > 6)
 				.count()
@@ -59,7 +59,7 @@ public class Document {
 	
 	public BigDecimal getSyllableCount() {
 		return BigDecimal.valueOf(
-				phrases.stream()
+				sentences.stream()
 					.flatMap(p -> p.getWords().stream())
 					.map(w -> w.getSyllables().size())
 					.reduce(0, (s, i) -> i+s)
@@ -68,7 +68,7 @@ public class Document {
 
 	public BigDecimal getCharacterCount() {
 		return BigDecimal.valueOf(
-				phrases.stream()
+				sentences.stream()
 					.flatMap(p -> p.getWords().stream())
 					.map(Word::getOriginalText)
 					.map(String::length)

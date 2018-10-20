@@ -14,7 +14,7 @@ public class ColemanLiauIndexCalculator implements IndexCalculator {
 	@Override
 	public BigDecimal execute(Document document) {
 		BigDecimal l = document.getCharacterCount().divide(document.getWordCount(), 2, RoundingMode.HALF_UP).multiply(ONE_HUNDRED);
-		BigDecimal s = document.getPhraseCount().divide(document.getWordCount(), 2, RoundingMode.HALF_UP).multiply(ONE_HUNDRED);
+		BigDecimal s = document.getSentenceCount().divide(document.getWordCount(), 2, RoundingMode.HALF_UP).multiply(ONE_HUNDRED);
 		
 		return FACTOR_A.multiply(l)
 					.subtract(FACTOR_B.multiply(s))
