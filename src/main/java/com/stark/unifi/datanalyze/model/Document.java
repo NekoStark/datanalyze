@@ -33,6 +33,9 @@ public class Document {
 				);
 	}
 	
+	/**
+	 * Words with more than 3 syllables
+	 */
 	public BigDecimal getComplexWordCount() {
 		return BigDecimal.valueOf(
 				phrases.stream()
@@ -40,6 +43,18 @@ public class Document {
 					.filter(w -> w.getSyllables().size() > 3)
 					.count()
 				);
+	}
+	
+	/**
+	 * Words with more than 6 letters
+	 */
+	public BigDecimal getLongWordCount() {
+		return BigDecimal.valueOf(
+				phrases.stream()
+				.flatMap(p -> p.getWords().stream())
+				.filter(w -> w.getOriginalText().length() > 6)
+				.count()
+			);
 	}
 	
 	public BigDecimal getSyllableCount() {

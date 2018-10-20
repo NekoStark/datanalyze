@@ -50,6 +50,14 @@ public class IndexCalculatorTest {
 	}
 	
 	@Test
+	public void testLixIndex() {
+		calculator = new LixIndexCalculator();
+		BigDecimal result = calculator.execute(document);
+		
+		assertEquals(BigDecimal.valueOf(38.93), result);
+	}
+	
+	@Test
 	public void testAutomatedReadabilityIndex() {
 		calculator = new AutomatedReadabilityIndexCalculator();
 		BigDecimal result = calculator.execute(document);
