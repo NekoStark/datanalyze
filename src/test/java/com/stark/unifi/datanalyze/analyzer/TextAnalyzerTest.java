@@ -24,7 +24,7 @@ public class TextAnalyzerTest {
 		assertEquals(BigDecimal.valueOf(36), result.getWordCount());
 		assertEquals(BigDecimal.valueOf(205), result.getCharacterCount());
 		assertEquals(BigDecimal.valueOf(137), result.getSyllableCount());
-		assertEquals(BigDecimal.valueOf(17), result.getComplexWordCount());
+		assertEquals(BigDecimal.valueOf(17), result.getComplexWordCount(3));
 		assertEquals(BigDecimal.valueOf(12), result.getLongWordCount());
 	}
 	

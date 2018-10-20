@@ -36,11 +36,11 @@ public class Document {
 	/**
 	 * Words with more than 3 syllables
 	 */
-	public BigDecimal getComplexWordCount() {
+	public BigDecimal getComplexWordCount(int numOfSyllables) {
 		return BigDecimal.valueOf(
 				phrases.stream()
 					.flatMap(p -> p.getWords().stream())
-					.filter(w -> w.getSyllables().size() > 3)
+					.filter(w -> w.getSyllables().size() > numOfSyllables)
 					.count()
 				);
 	}

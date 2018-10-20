@@ -65,4 +65,12 @@ public class IndexCalculatorTest {
 		assertEquals(BigDecimal.valueOf(8.45), result);
 	}
 	
+	@Test
+	public void testSmogIndex() {
+		calculator = new SmogIndexCalculator();
+		BigDecimal result = calculator.execute(document);
+		
+		assertEquals(BigDecimal.valueOf(17.52), result);
+	}
+	
 }
