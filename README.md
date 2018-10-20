@@ -20,8 +20,7 @@ java -jar datanalyze
 
 - Nella directory di output vengono prodotti i seguenti file di output
   - ```extracted```: se l'input è un pdf, viene salvato il contenuto in txt
-  - ```stats```: statistiche estratte dal testo (e.g. numero di parole)
-  - ```indexes```: gli indici di leggibilità calcolati
+  - ```result```: statistiche estratte dal testo (e.g. numero di parole) e gli indici di leggibilità calcolati
 
 ### Funzionamento
 Il funzionamento principale dell'applicazione si basa sulle seguenti classi: 

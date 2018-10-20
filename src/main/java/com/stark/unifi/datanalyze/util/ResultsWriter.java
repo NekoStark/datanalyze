@@ -44,16 +44,13 @@ public class ResultsWriter {
 			write(getOutputFile("extracted"), Collections.singletonList(d.getOriginalText()));
 		}
 		
-		// Write document stats
-		write(getOutputFile("stats"), Arrays.asList(
+		// Write document stats & indexes
+		write(getOutputFile("result"), Arrays.asList(
 			"Words: " + d.getWordCount(),
 			"Sentences: " + d.getSentenceCount(),
 			"Syllables: " + d.getSyllableCount(),
-			"Characters: " + d.getCharacterCount()
-		));
-		
-		// Write indexes
-		write(getOutputFile("indexes"), Arrays.asList(
+			"Characters: " + d.getCharacterCount(),
+			"",
 			"Automated Readability Index: " + new AutomatedReadabilityIndexCalculator().execute(d),
 			"Coleman Liau Index: " + new ColemanLiauIndexCalculator().execute(d),
 			"Flesch Reading Ease: " + new FleschReadingEaseCalculator().execute(d),
@@ -62,7 +59,6 @@ public class ResultsWriter {
 			"Lix Index: " + new LixIndexCalculator().execute(d),
 			"SMOG Index: " + new SmogIndexCalculator().execute(d)
 		));
-		
 	}
 
 	private File getOutputFile(String fileName) {
