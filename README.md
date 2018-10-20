@@ -35,4 +35,11 @@ Altre classi degne di menzione:
 
 ### Indici di leggibilità implementati
 
-...
+- Automated Readablity
+- Coleman Liau
+- Flesch Reading Ease
+- Flesch Kincaid
+- Fog Index
+- Lix Index
+- SMOG Index
+

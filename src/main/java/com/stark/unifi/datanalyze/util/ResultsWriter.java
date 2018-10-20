@@ -12,6 +12,11 @@ import java.util.logging.Logger;
 
 import com.stark.unifi.datanalyze.calc.AutomatedReadabilityIndexCalculator;
 import com.stark.unifi.datanalyze.calc.ColemanLiauIndexCalculator;
+import com.stark.unifi.datanalyze.calc.FleschKincaidIndexCalculator;
+import com.stark.unifi.datanalyze.calc.FleschReadingEaseCalculator;
+import com.stark.unifi.datanalyze.calc.FogIndexCalculator;
+import com.stark.unifi.datanalyze.calc.LixIndexCalculator;
+import com.stark.unifi.datanalyze.calc.SmogIndexCalculator;
 import com.stark.unifi.datanalyze.exception.ResultsWriterException;
 import com.stark.unifi.datanalyze.model.Document;
 
@@ -50,7 +55,12 @@ public class ResultsWriter {
 		// Write indexes
 		write(getOutputFile("indexes"), Arrays.asList(
 			"Automated Readability Index: " + new AutomatedReadabilityIndexCalculator().execute(d),
-			"Coleman Liau Index: " + new ColemanLiauIndexCalculator().execute(d)
+			"Coleman Liau Index: " + new ColemanLiauIndexCalculator().execute(d),
+			"Flesch Reading Ease: " + new FleschReadingEaseCalculator().execute(d),
+			"Flesch Kincaid Index: " + new FleschKincaidIndexCalculator().execute(d),
+			"Fog Index: " + new FogIndexCalculator().execute(d),
+			"Lix Index: " + new LixIndexCalculator().execute(d),
+			"SMOG Index: " + new SmogIndexCalculator().execute(d)
 		));
 		
 	}
