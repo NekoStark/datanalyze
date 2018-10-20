@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.stark.unifi.datanalyze.analyzer.TextAnalyzer;
-import com.stark.unifi.datanalyze.calc.AutomaticReadingIndexCalculator;
+import com.stark.unifi.datanalyze.calc.AutomatedReadabilityIndexCalculator;
 import com.stark.unifi.datanalyze.calc.ColemanLiauIndexCalculator;
 import com.stark.unifi.datanalyze.calc.IndexCalculator;
 import com.stark.unifi.datanalyze.model.Document;
@@ -50,8 +50,8 @@ public class IndexCalculatorTest {
 	}
 	
 	@Test
-	public void testAutomaticReadingIndex() {
-		calculator = new AutomaticReadingIndexCalculator();
+	public void testAutomatedReadabilityIndex() {
+		calculator = new AutomatedReadabilityIndexCalculator();
 		BigDecimal result = calculator.execute(document);
 		
 		assertEquals(BigDecimal.valueOf(8.45), result);

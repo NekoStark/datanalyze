@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 
 import com.stark.unifi.datanalyze.model.Document;
 
-public class AutomaticReadingIndexCalculator implements IndexCalculator {
+public class AutomatedReadabilityIndexCalculator implements IndexCalculator {
 
 	public static final BigDecimal FACTOR_A = BigDecimal.valueOf(4.71);
 	public static final BigDecimal FACTOR_B = BigDecimal.valueOf(0.5);

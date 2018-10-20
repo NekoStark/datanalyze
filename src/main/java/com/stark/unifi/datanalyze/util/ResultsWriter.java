@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import com.stark.unifi.datanalyze.calc.AutomaticReadingIndexCalculator;
+import com.stark.unifi.datanalyze.calc.AutomatedReadabilityIndexCalculator;
 import com.stark.unifi.datanalyze.calc.ColemanLiauIndexCalculator;
 import com.stark.unifi.datanalyze.exception.ResultsWriterException;
 import com.stark.unifi.datanalyze.model.Document;
@@ -49,7 +49,7 @@ public class ResultsWriter {
 		
 		// Write indexes
 		write(getOutputFile("indexes"), Arrays.asList(
-			"Automatic Reading Index: " + new AutomaticReadingIndexCalculator().execute(d),
+			"Automated Readability Index: " + new AutomatedReadabilityIndexCalculator().execute(d),
 			"Coleman Liau Index: " + new ColemanLiauIndexCalculator().execute(d)
 		));
 		
