@@ -2,6 +2,8 @@ package com.stark.unifi.datanalyze.model;
 
 import java.util.List;
 
+import com.stark.unifi.datanalyze.analyzer.Syllabifier;
+
 public class Document {
 
 	private List<Sentence> sentences;
@@ -36,7 +38,7 @@ public class Document {
 	public long getComplexWordCount(int numOfSyllables) {
 		return sentences.stream()
 					.flatMap(p -> p.getWords().stream())
-					.filter(w -> w.getSyllables().size() > numOfSyllables)
+					.filter(w -> new Syllabifier().getSyllableCount(w) > numOfSyllables)
 					.count();
 	}
 	
@@ -46,23 +48,27 @@ public class Document {
 	public long getLongWordCount() {
 		return sentences.stream()
 				.flatMap(p -> p.getWords().stream())
-				.filter(w -> w.getOriginalText().length() > 6)
+				.filter(w -> w.length() > 6)
 				.count();
 	}
 	
 	public long getSyllableCount() {
 		return sentences.stream()
 					.flatMap(p -> p.getWords().stream())
-					.map(w -> w.getSyllables().size())
+					.map(w -> new Syllabifier().getSyllableCount(w))
 					.reduce(0, (s, i) -> i+s);
 	}
 
 	public long getCharacterCount() {
 		return sentences.stream()
 					.flatMap(p -> p.getWords().stream())
-					.map(Word::getOriginalText)
 					.map(String::length)
 					.reduce(0, (s, i) -> i+s);
+	}
+
+	@Override
+	public String toString() {
+		return "Document [originalText=" + originalText + "]";
 	}
 
 }

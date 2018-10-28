@@ -4,20 +4,25 @@ import java.util.List;
 
 public class Sentence {
 
-	private List<Word> words;
+	private List<String> words;
 	private String originalText;
 
-	public Sentence(List<Word> words, String originalText) {
+	public Sentence(List<String> words, String originalText) {
 		this.words = words;
 		this.originalText = originalText;
 	}
 
-	public List<Word> getWords() {
+	public List<String> getWords() {
 		return words;
 	}
 
 	public String getOriginalText() {
 		return originalText;
+	}
+
+	@Override
+	public String toString() {
+		return "Sentence [words=" + words + "]";
 	}
 
 }

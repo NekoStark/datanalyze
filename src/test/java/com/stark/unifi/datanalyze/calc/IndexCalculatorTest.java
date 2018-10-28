@@ -1,15 +1,13 @@
 package com.stark.unifi.datanalyze.calc;
 
 import static org.junit.Assert.assertEquals;
-
-import java.math.BigDecimal;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import com.stark.unifi.datanalyze.analyzer.TextAnalyzer;
 import com.stark.unifi.datanalyze.model.Document;
-import com.stark.unifi.datanalyze.util.FileContentReader;
 
 public class IndexCalculatorTest {
 
@@ -18,8 +16,14 @@ public class IndexCalculatorTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		String text = new FileContentReader().read("/txt/basic_500.txt");
-		document = new TextAnalyzer().analyzeText(text);
+		document = mock(Document.class);
+		when(document.getSentenceCount()).thenReturn(60L);
+		when(document.getWordCount()).thenReturn(500L);
+		when(document.getLongWordCount()).thenReturn(153L);
+		when(document.getComplexWordCount(2)).thenReturn(381L);
+		when(document.getComplexWordCount(3)).thenReturn(200L);
+		when(document.getSyllableCount()).thenReturn(1738L);
+		when(document.getCharacterCount()).thenReturn(2730L);
 	}
 	
 	@Test
