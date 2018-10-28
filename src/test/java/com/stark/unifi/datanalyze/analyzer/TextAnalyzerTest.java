@@ -24,8 +24,8 @@ public class TextAnalyzerTest {
 		
 		assertEquals(36, result.getWordCount());
 		assertEquals(205, result.getCharacterCount());
-		assertEquals(137, result.getSyllableCount());
-		assertEquals(17, result.getComplexWordCount(3));
+		assertEquals(86, result.getSyllableCount());
+		assertEquals(6, result.getComplexWordCount(3));
 		assertEquals(12, result.getLongWordCount());
 	}
 	
