@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.stark.unifi.datanalyze.model.Document;
 import com.stark.unifi.datanalyze.model.Sentence;
 import com.stark.unifi.datanalyze.util.ApplicationProperties;
@@ -32,7 +34,10 @@ public class TextAnalyzer {
 	}
 	
 	private List<String> getWords(String phrase) {
-		String sanitized = phrase.replaceAll(properties.getCharacterRegex(), " ");
+		String sanitized = StringUtils
+							.stripAccents(phrase)
+							.replaceAll(properties.getCharacterRegex(), " ");
+		
 		return Stream.of(sanitized.split("\\s"))
 					.filter(s -> !properties.getStopWords().contains(s))
 					.collect(Collectors.toList());

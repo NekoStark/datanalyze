@@ -29,4 +29,17 @@ public class TextAnalyzerTest {
 		assertEquals(12, result.getLongWordCount());
 	}
 	
+	@Test
+	public void testAnalyzeTextWithAccents() throws Exception {
+		analyzer = new TextAnalyzer();
+		String text = new FileContentReader().read("/txt/accents.txt");
+		Document result = analyzer.analyzeText(text);
+		
+		assertEquals(text, result.getOriginalText());
+		
+		assertEquals(5, result.getWordCount());
+		assertEquals(34, result.getCharacterCount());
+		assertEquals(14, result.getSyllableCount());
+	}
+	
 }

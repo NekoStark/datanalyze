@@ -20,4 +20,9 @@ public class Sentence {
 		return originalText;
 	}
 
+	@Override
+	public String toString() {
+		return "Sentence [words=" + words + "]";
+	}
+
 }

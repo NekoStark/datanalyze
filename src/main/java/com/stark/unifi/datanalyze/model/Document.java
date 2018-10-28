@@ -66,4 +66,9 @@ public class Document {
 					.reduce(0, (s, i) -> i+s);
 	}
 
+	@Override
+	public String toString() {
+		return "Document [originalText=" + originalText + "]";
+	}
+
 }
