@@ -14,7 +14,10 @@ public class FileContentReader {
 		StringBuilder sb = new StringBuilder();
 		String fileName = TextAnalyzerTest.class.getResource(resourcePath).getPath();
 		try (Stream<String> stream = Files.lines(Paths.get(fileName))) {
-			stream.forEach(sb::append);
+			stream.forEach(s-> {
+				sb.append(s);
+				sb.append("\n");
+			});
 			
 		} catch(IOException e) {
 			throw new FileContentReaderException(e);

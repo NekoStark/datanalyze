@@ -4,8 +4,8 @@ import com.stark.unifi.datanalyze.analyzer.TextAnalyzer;
 import com.stark.unifi.datanalyze.exception.CommandLineOptionsParseException;
 import com.stark.unifi.datanalyze.model.Document;
 import com.stark.unifi.datanalyze.reader.TextReader;
+import com.stark.unifi.datanalyze.results.ResultsWriter;
 import com.stark.unifi.datanalyze.util.CommandLineOptions;
-import com.stark.unifi.datanalyze.util.ResultsWriter;
 
 public class DatanalyzeMain {
 
@@ -23,7 +23,7 @@ public class DatanalyzeMain {
 			TextAnalyzer analyzer = new TextAnalyzer();
 			Document doc = analyzer.analyzeText(text);
 			
-			new ResultsWriter(opts).write(doc, TextReader.isTxt(inputFilePath));
+			ResultsWriter.write(doc, inputFilePath, opts);
 			
 		} catch(CommandLineOptionsParseException e) {
 			opts.printHelp();

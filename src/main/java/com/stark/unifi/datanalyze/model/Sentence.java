@@ -22,7 +22,7 @@ public class Sentence {
 
 	@Override
 	public String toString() {
-		return "Sentence [words=" + words + "]";
+		return "Sentence [" + originalText + "] [words=" + words + "]";
 	}
 
 }

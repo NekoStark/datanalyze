@@ -15,12 +15,14 @@ public class CommandLineOptions {
 
 	private String inputFile;
 	private String outputDir;
+	private boolean csvOutput;
 	private boolean alwaysTreatAsDiphthong;
 
 	public CommandLineOptions() {
 		options = new Options();
 		options.addOption("i", "inputFile", true, "the pdf or txt file to analyze");
 		options.addOption("o", "outputDir", true, "the directory where to write output files");
+		options.addOption("csv", "formats the results as csv instead of txt");
 		options.addOption("d", "treatAsDiphthong", true,
 				"if true never breaks groups of vowels. Otherwhise always break group of vowels (hyatus)˙");
 	}
@@ -34,6 +36,7 @@ public class CommandLineOptions {
 
 		this.inputFile = cmd.getOptionValue("i");
 		this.outputDir = cmd.getOptionValue("o");
+		this.csvOutput = cmd.hasOption("csv");
 		this.alwaysTreatAsDiphthong = cmd.hasOption("o") ? Boolean.valueOf(cmd.getOptionValue("o")) : true;
 	}
 
@@ -43,6 +46,10 @@ public class CommandLineOptions {
 
 	public String getOutputDir() {
 		return outputDir;
+	}
+	
+	public boolean isCsvOutput() {
+		return csvOutput;
 	}
 
 	public boolean isAlwaysTreatAsDiphthong() {

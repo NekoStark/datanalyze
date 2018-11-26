@@ -58,4 +58,10 @@ public class TextReaderTest {
 		}
 	}
 	
+	@Test
+	public void testReadHtml() throws Exception {
+		String filePath = TextReaderTest.class.getResource("/htm/dummy.htm").getFile();
+		assertEquals("Dummy HTML file with a link", TextReader.read(filePath).trim());
+	}
+	
 }
