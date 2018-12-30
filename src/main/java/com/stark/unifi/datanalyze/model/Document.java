@@ -1,8 +1,6 @@
 package com.stark.unifi.datanalyze.model;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -63,7 +61,6 @@ public class Document {
 					.reduce(0, (s, i) -> i+s);
 	}
 
-	// XXX V5
 	public long getCharacterCount() {
 		return sentences.stream()
 					.map(Sentence::getOriginalText)
@@ -73,16 +70,10 @@ public class Document {
 					.filter(s -> s.length() > 1)
 					.map(String::length)
 					.reduce(0, (s, i) -> i+s);
-				
-//		return sentences.stream()
-//					.flatMap(p -> p.getWords().stream())
-//					.map(String::length)
-//					.reduce(0, (s, i) -> i+s);
 	}
 	
 	private static Integer getSyllableCount(String w) {
 		return new SyllableCounter().count(w);
-//		return new Syllabifier().getSyllableCount(w);
 	}
 
 	@Override

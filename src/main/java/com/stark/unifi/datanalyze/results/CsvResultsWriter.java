@@ -49,7 +49,7 @@ public class CsvResultsWriter {
 		write(
 			extractedFile,
 			Arrays.asList(
-//				d.toString()
+//				d.getOriginalText()
 //				"\n\n\n",
 				d.getSentences().stream().map(Sentence::toString).collect(joining("\n"))
 			),
@@ -64,10 +64,10 @@ public class CsvResultsWriter {
 			// Write header only if not appending
 			write(resultsFile,
 				Arrays.asList(
-					"id", "Words", "Sentences", "Syllables", "Characters"//, 
-//					"Automated Readability Index", "Coleman Liau Index",
-//					"Flesch Reading Ease", "Flesch Kincaid Index", 
-//					"Fog Index", "Lix Index", "SMOG Index"
+					"id", "Words", "Sentences", "Syllables", "Characters", 
+					"Automated Readability Index", "Coleman Liau Index",
+					"Flesch Reading Ease", "Flesch Kincaid Index", 
+					"Fog Index", "Lix Index", "SMOG Index"
 				),
 				StandardOpenOption.APPEND
 			);
@@ -80,14 +80,14 @@ public class CsvResultsWriter {
 				String.valueOf( d.getWordCount() ),
 				String.valueOf( d.getSentenceCount() ),
 				String.valueOf( d.getSyllableCount() ),
-				String.valueOf( d.getCharacterCount() )//,
-//				String.valueOf( new AutomatedReadabilityIndexCalculator().execute(d) ),
-//				String.valueOf( new ColemanLiauIndexCalculator().execute(d) ),
-//				String.valueOf( new FleschReadingEaseCalculator().execute(d) ),
-//				String.valueOf( new FleschKincaidIndexCalculator().execute(d) ),
-//				String.valueOf( new FogIndexCalculator().execute(d) ),
-//				String.valueOf( new LixIndexCalculator().execute(d) ),
-//				String.valueOf( new SmogIndexCalculator().execute(d ))
+				String.valueOf( d.getCharacterCount() ),
+				String.valueOf( new AutomatedReadabilityIndexCalculator().execute(d) ),
+				String.valueOf( new ColemanLiauIndexCalculator().execute(d) ),
+				String.valueOf( new FleschReadingEaseCalculator().execute(d) ),
+				String.valueOf( new FleschKincaidIndexCalculator().execute(d) ),
+				String.valueOf( new FogIndexCalculator().execute(d) ),
+				String.valueOf( new LixIndexCalculator().execute(d) ),
+				String.valueOf( new SmogIndexCalculator().execute(d ))
 			),
 			StandardOpenOption.APPEND
 		);
