@@ -23,9 +23,9 @@ public class TextAnalyzerTest {
 		assertEquals(6, result.getSentenceCount());
 		
 		assertEquals(36, result.getWordCount());
-		assertEquals(205, result.getCharacterCount());
-		assertEquals(86, result.getSyllableCount());
-		assertEquals(6, result.getComplexWordCount(3));
+		assertEquals(244, result.getCharacterCount());
+		assertEquals(80, result.getSyllableCount());
+		assertEquals(5, result.getComplexWordCount(3));
 		assertEquals(12, result.getLongWordCount());
 	}
 	
@@ -38,8 +38,8 @@ public class TextAnalyzerTest {
 		assertEquals(text, result.getOriginalText());
 		
 		assertEquals(5, result.getWordCount());
-		assertEquals(34, result.getCharacterCount());
-		assertEquals(14, result.getSyllableCount());
+		assertEquals(38, result.getCharacterCount());
+		assertEquals(12, result.getSyllableCount());
 	}
 	
 }
