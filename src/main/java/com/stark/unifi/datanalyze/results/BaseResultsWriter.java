@@ -1,4 +1,4 @@
-package com.stark.unifi.datanalyze.util;
+package com.stark.unifi.datanalyze.results;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,18 +19,19 @@ import com.stark.unifi.datanalyze.calc.LixIndexCalculator;
 import com.stark.unifi.datanalyze.calc.SmogIndexCalculator;
 import com.stark.unifi.datanalyze.exception.ResultsWriterException;
 import com.stark.unifi.datanalyze.model.Document;
+import com.stark.unifi.datanalyze.util.CommandLineOptions;
 
-public class ResultsWriter {
+public class BaseResultsWriter {
 
 	private static final Logger LOGGER = Logger.getLogger(ResultsWriter.class.getName());
 
 	private File outputDir;
 
-	public ResultsWriter(CommandLineOptions opts) {
+	public BaseResultsWriter(CommandLineOptions opts) {
 		outputDir = new File(opts.getOutputDir());
 	}
 
-	public void write(Document d, boolean skipExtractedFile) {
+	public void write(Document d) {
 		if (!outputDir.exists()) {
 			throw new ResultsWriterException("Output directory doesn't not exist");
 		}
@@ -40,9 +41,7 @@ public class ResultsWriter {
 		}
 
 		// Write extracted text
-		if(!skipExtractedFile) {
-			write(getOutputFile("extracted"), Collections.singletonList(d.getOriginalText()));
-		}
+		write(getOutputFile("extracted"), Collections.singletonList(d.getOriginalText()));
 		
 		// Write document stats & indexes
 		write(getOutputFile("result"), Arrays.asList(

@@ -2,7 +2,9 @@ package com.stark.unifi.datanalyze.model;
 
 import java.util.List;
 
-import com.stark.unifi.datanalyze.analyzer.Syllabifier;
+import org.apache.commons.lang3.StringUtils;
+
+import eu.crydee.syllablecounter.SyllableCounter;
 
 public class Document {
 
@@ -38,10 +40,10 @@ public class Document {
 	public long getComplexWordCount(int numOfSyllables) {
 		return sentences.stream()
 					.flatMap(p -> p.getWords().stream())
-					.filter(w -> new Syllabifier().getSyllableCount(w) > numOfSyllables)
+					.filter(w -> getSyllableCount(w) > numOfSyllables)
 					.count();
 	}
-	
+
 	/**
 	 * Words with more than 6 letters
 	 */
@@ -55,20 +57,28 @@ public class Document {
 	public long getSyllableCount() {
 		return sentences.stream()
 					.flatMap(p -> p.getWords().stream())
-					.map(w -> new Syllabifier().getSyllableCount(w))
+					.map(Document::getSyllableCount)
 					.reduce(0, (s, i) -> i+s);
 	}
 
 	public long getCharacterCount() {
 		return sentences.stream()
-					.flatMap(p -> p.getWords().stream())
+					.map(Sentence::getOriginalText)
+					.map(StringUtils::stripAccents)
+					.map(p -> p.replaceAll("[^a-zA-Z_0-9]+", " "))
+					.map(String::toLowerCase)
+					.filter(s -> s.length() > 1)
 					.map(String::length)
 					.reduce(0, (s, i) -> i+s);
+	}
+	
+	private static Integer getSyllableCount(String w) {
+		return new SyllableCounter().count(w);
 	}
 
 	@Override
 	public String toString() {
-		return "Document [originalText=" + originalText + "]";
+		return "Document [" + originalText + "]";
 	}
 
 }

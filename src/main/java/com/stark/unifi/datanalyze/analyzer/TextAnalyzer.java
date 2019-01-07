@@ -30,6 +30,7 @@ public class TextAnalyzer {
 		return Stream.of(text.split(properties.getPhraseStopRegex()))
 					.map(String::trim)
 					.map(s -> new Sentence(getWords(s), s))
+					.filter(s -> !s.getWords().isEmpty())
 					.collect(Collectors.toList());
 	}
 	
@@ -39,7 +40,9 @@ public class TextAnalyzer {
 							.replaceAll(properties.getCharacterRegex(), " ");
 		
 		return Stream.of(sanitized.split("\\s"))
+					.map(String::toLowerCase)
 					.filter(s -> !properties.getStopWords().contains(s))
+					.filter(s -> s.length() > 1)
 					.collect(Collectors.toList());
 	}
 	
